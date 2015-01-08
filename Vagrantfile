@@ -6,6 +6,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: '192.168.77.7'
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 
+  config.vm.hostname = 'railstutorial.vagrant'
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+
   config.ssh.forward_agent = true
 
 
@@ -22,12 +30,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vm.vmx['numvcpus']            = 2
   end
 
-  config.vm.provider :parallels do |ps, override|
-    ps.optimize_power_consumption = false
-    ps.memory                     = 1024
-    ps.cpus                       = 2
-  end
 
+  config.vm.provision :hosts do |provisioner|
+    provisioner.add_host '10.0.2.2', ['myhost.vagrantup.internal']
+  end
 
   config.omnibus.chef_version = :latest
 
@@ -69,6 +75,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
     }
   end
-
 
 end
