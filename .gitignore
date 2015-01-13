@@ -17,3 +17,6 @@
 
 cookbooks/
 .vagrant/
+
+# SimpleCov
+/coverage
