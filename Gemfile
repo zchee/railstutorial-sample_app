@@ -9,6 +9,7 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem "rack-dev-mark"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -17,12 +18,23 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rails-footnotes'
+  gem 'pry-rails'
+  gem 'rack-mini-profiler'
+  gem 'xray-rails'
+  gem 'did_you_mean'
+  gem 'view_source_map'
+  gem 'quiet_assets'
+  gem 'bullet'
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.1'
+  gem 'simplecov', require: false
 
   # Uncomment this line on OS X.
   # gem 'growl', '1.0.3'
